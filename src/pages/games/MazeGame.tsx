@@ -9,8 +9,8 @@ import { useNavigate } from "react-router";
 
 type Cell = 0 | 1 | 2; // 0 = path, 1 = wall, 2 = goal
 
-const ROWS = 31;
-const COLS = 31;
+const ROWS = 21;
+const COLS = 21;
 
 interface Pos {
   row: number;

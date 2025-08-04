@@ -9,8 +9,8 @@ import { useNavigate } from "react-router";
 
 type Cell = 0 | 1 | 2; // 0 = path, 1 = wall, 2 = goal
 
-const ROWS = 21;
-const COLS = 21;
+const ROWS = 31;
+const COLS = 31;
 
 interface Pos {
   row: number;
@@ -50,7 +50,7 @@ function generateMaze(rows: number, cols: number): Cell[][] {
     for (const { dr, dc } of dirs) {
       const nr = r + dr;
       const nc = c + dc;
-      if (inBounds(nr, nc) && maze[nr][nc] === 1) {
+      if (inBounds(nr, nc) && maze[nr][nc] === 1 && Math.random() > 0.2) {
         maze[r + dr / 2][c + dc / 2] = 0;
         carvePassagesFrom(nr, nc);
       }

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <style>
+    .bg { fill: #0e0e0e; }
+    .big { fill: #ffffff; font-family: monospace; font-size: 20px; font-weight: bold; }
+    .small { fill: #ffffff; font-family: monospace; font-size: 4px; }
+  </style>
+  <!-- Circle background -->
+  <circle cx="32" cy="32" r="32" class="bg" />
+  
+  <!-- Big 404 text -->
+  <text x="14" y="37" class="big">404</text>
+
+  <!-- Small foundme text -->
+  <text x="24" y="44" class="small">foundme</text>
+</svg>

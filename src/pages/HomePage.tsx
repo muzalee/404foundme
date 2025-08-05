@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, Button } from "@mantine/core";
+import { Text, Button, Group } from "@mantine/core";
 import { showNotification } from "@mantine/notifications";
 import { STYLES } from "@/constants/style.constants";
 
@@ -13,6 +13,10 @@ const HomePage: React.FC = () => {
     });
   };
 
+  const handleContactClick = () => {
+    window.open("mailto:contact@404foundme.com");
+  };
+
   return (
     <div
       className={`flex flex-col items-center justify-center px-6 text-center ${STYLES.MAIN_CONTENT_HEIGHT_MIN}`}
@@ -23,19 +27,33 @@ const HomePage: React.FC = () => {
         code.
       </Text>
 
-      <Text size="lg" c="dimmed" mb={20} style={{ maxWidth: 600 }}>
+      <Text size="lg" c="dimmed" mb={30} style={{ maxWidth: 600 }}>
         You're not lost. You're just early.
       </Text>
-      <Button
-        size="md"
-        variant="default"
-        onClick={handleHintClick}
-        className="uppercase font-semibold tracking-wide"
-        radius="xl"
-        style={{ minWidth: 180 }}
-      >
-        Psst... Click me
-      </Button>
+
+      <Group gap="md" align="center" justify="center">
+        <Button
+          size="md"
+          variant="default"
+          onClick={handleHintClick}
+          className="uppercase font-semibold tracking-wide"
+          radius="xl"
+          style={{ minWidth: 180 }}
+        >
+          Psst... Click me
+        </Button>
+
+        <Button
+          size="md"
+          variant="default"
+          onClick={handleContactClick}
+          className="uppercase font-semibold tracking-wide"
+          radius="xl"
+          style={{ minWidth: 180 }}
+        >
+          Say Hello
+        </Button>
+      </Group>
     </div>
   );
 };

@@ -17,7 +17,10 @@ export function Layout() {
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
   const isDark = colorScheme === "dark";
 
-  const projects = [{ name: "Maze Game", path: ROUTES.MAZE }];
+  const projects = [
+    { name: "Maze Game", path: ROUTES.MAZE },
+    { name: "More Coming..." },
+  ];
 
   return (
     <AppShell header={{ height: 60 }} footer={{ height: 30 }} padding="md">
@@ -47,7 +50,8 @@ export function Layout() {
                     <Menu.Item
                       key={project.path}
                       component={Link}
-                      to={project.path}
+                      disabled={!project.path}
+                      to={project.path || "#"}
                     >
                       {project.name}
                     </Menu.Item>

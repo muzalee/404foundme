@@ -14,7 +14,7 @@ const HomePage: React.FC = () => {
   };
 
   const handleContactClick = () => {
-    window.open("mailto:contact@404foundme.com");
+    window.open("mailto:contact@404foundme.xyz");
   };
 
   return (

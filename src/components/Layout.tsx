@@ -5,15 +5,19 @@ import {
   Anchor,
   AppShell,
   Group,
+  Menu,
   Text,
   useMantineColorScheme,
 } from "@mantine/core";
 import { Link, Outlet } from "react-router";
 import { IconExternalLink, IconMoon, IconSun } from "@tabler/icons-react";
+import { ROUTES } from "@/constants";
 
 export function Layout() {
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
   const isDark = colorScheme === "dark";
+
+  const projects = [{ name: "Maze Game", path: ROUTES.MAZE }];
 
   return (
     <AppShell header={{ height: 60 }} footer={{ height: 30 }} padding="md">
@@ -27,7 +31,29 @@ export function Layout() {
                 className="h-6 sm:h-7 cursor-pointer"
               />
             </Link>
-            <Group ml="xl" gap={0}>
+            <Group ml="xl" gap="sm">
+              <Menu shadow="md" width={200} withArrow position="bottom-end">
+                <Menu.Target>
+                  <button
+                    className="px-1 sm:px-3 py-1 rounded hover:bg-gray-100 hover:text-black dark:hover:bg-zinc-700 dark:hover:text-gray-300 text-gray-900 dark:text-gray-200 cursor-pointer"
+                    style={{ fontWeight: 500, fontSize: "14px" }}
+                  >
+                    Projects
+                  </button>
+                </Menu.Target>
+
+                <Menu.Dropdown>
+                  {projects.map((project) => (
+                    <Menu.Item
+                      key={project.path}
+                      component={Link}
+                      to={project.path}
+                    >
+                      {project.name}
+                    </Menu.Item>
+                  ))}
+                </Menu.Dropdown>
+              </Menu>
               <ActionIcon
                 variant="default"
                 onClick={() => toggleColorScheme()}

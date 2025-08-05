@@ -1,4 +1,3 @@
-import Footer from "@/components/Footer";
 import React, {
   useState,
   useEffect,
@@ -150,8 +149,6 @@ const MazeGame: React.FC = () => {
           >
             Back to Home
           </button>
-
-          <Footer />
         </div>
       </div>
     );
@@ -216,8 +213,6 @@ const MazeGame: React.FC = () => {
           Press <b>R</b> to regenerate a new maze.
         </p>
       )}
-
-      <Footer />
     </div>
   );
 };

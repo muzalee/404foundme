@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36.5 19.5">
+  <style>
+    .big { fill: black; font-family: monospace; font-size: 20px; font-weight: bold; }
+    .small { fill: black; font-family: monospace; font-size: 4px; }
+  </style>
+
+  <text x="0" y="15" class="big">404</text>
+  <text x="9.8" y="19" class="small">foundme</text>
+</svg>

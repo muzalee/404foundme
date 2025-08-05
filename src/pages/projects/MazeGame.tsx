@@ -1,10 +1,7 @@
-import React, {
-  useState,
-  useEffect,
-  useRef,
-  useState as useReactState,
-} from "react";
+import React, { useState, useEffect, useRef } from "react";
+import { Button, Text } from "@mantine/core";
 import { useNavigate } from "react-router";
+import { STYLES } from "@/constants";
 
 type Cell = 0 | 1 | 2; // 0 = path, 1 = wall, 2 = goal
 
@@ -75,7 +72,7 @@ const MazeGame: React.FC = () => {
   const [maze, setMaze] = useState<Cell[][]>([]);
   const [playerPos, setPlayerPos] = useState<Pos>(startPos);
   const [hasWon, setHasWon] = useState(false);
-  const [isMobile, setIsMobile] = useReactState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
 
@@ -137,18 +134,23 @@ const MazeGame: React.FC = () => {
 
   if (isMobile) {
     return (
-      <div className="flex items-center justify-center min-h-screen bg-black text-white text-center px-4">
+      <div
+        className={`flex items-center justify-center text-center ${STYLES.MAIN_CONTENT_HEIGHT}`}
+      >
         <div>
           <h1 className="text-3xl font-bold mb-4">🚫 Desktop Only</h1>
           <p className="text-lg">
             This game is only available on desktop devices.
           </p>
-          <button
+          <Button
+            size="md"
+            variant="default"
             onClick={() => navigate("/")}
-            className="mt-6 px-5 py-2 border border-white text-white rounded hover:bg-white hover:text-black transition-colors cursor-pointer"
+            radius="xl"
+            mt={30}
           >
             Back to Home
-          </button>
+          </Button>
         </div>
       </div>
     );
@@ -159,18 +161,9 @@ const MazeGame: React.FC = () => {
       ref={containerRef}
       tabIndex={0}
       onKeyDown={handleKeyDown}
-      className="flex flex-col items-center justify-start min-h-screen px-4 py-6 text-white select-none outline-none"
+      className={`flex flex-col items-center justify-center select-none outline-none ${STYLES.MAIN_CONTENT_HEIGHT_MIN}`}
     >
-      <div className="w-full flex justify-start mb-4">
-        <button
-          onClick={() => navigate("/")}
-          className="px-4 py-1.5 text-sm border border-white text-white rounded hover:bg-white hover:text-black hover:bg-opacity-20 transition-colors backdrop-blur cursor-pointer"
-        >
-          Home
-        </button>
-      </div>
-
-      <h1 className="text-4xl font-bold mb-6">Random Maze Game</h1>
+      <h3 className="text-2xl font-bold mb-6">Maze Game</h3>
 
       <div
         className="grid"
@@ -183,16 +176,17 @@ const MazeGame: React.FC = () => {
         {maze.flatMap((row, r) =>
           row.map((cell, c) => {
             const isPlayer = playerPos.row === r && playerPos.col === c;
-            let bgColor = "bg-gray-900";
 
-            if (cell === 1) bgColor = "bg-gray-700";
-            if (cell === 2) bgColor = "bg-emerald-500";
-            if (isPlayer) bgColor = "bg-yellow-400";
+            let bgColor = "bg-gray-200 dark:bg-gray-900";
+
+            if (cell === 1) bgColor = "bg-gray-500 dark:bg-gray-700";
+            if (cell === 2) bgColor = "bg-green-600 dark:bg-green-500";
+            if (isPlayer) bgColor = "bg-red-500";
 
             return (
               <div
                 key={`${r}-${c}`}
-                className={`${bgColor} w-6 h-6 rounded-sm border border-gray-800`}
+                className={`${bgColor} w-6 h-6 rounded-sm border border-gray-300 dark:border-gray-700`}
               />
             );
           })
@@ -200,18 +194,37 @@ const MazeGame: React.FC = () => {
       </div>
 
       {hasWon && (
-        <div className="mt-6 p-4 bg-green-600 rounded text-white text-lg font-semibold animate-fadeIn">
+        <Text
+          mt={30}
+          fw={600}
+          style={{
+            backgroundColor: "var(--color-green-600)",
+            color: "var(--color-white)",
+            padding: "1rem",
+            borderRadius: "0.5rem",
+            fontSize: "1.125rem",
+            animation: "fadeIn 0.5s ease-out",
+          }}
+        >
           🎉 You Win! Press R to Restart 🎉
-        </div>
+        </Text>
       )}
 
       {!hasWon && (
-        <p className="mt-6 text-gray-400 max-w-xl text-center">
+        <Text
+          size="md"
+          mt={30}
+          style={{
+            color: "var(--color-gray-400)",
+            maxWidth: 600,
+            textAlign: "center",
+          }}
+        >
           Use arrow keys to move the yellow square through the maze to the green
           goal.
           <br />
           Press <b>R</b> to regenerate a new maze.
-        </p>
+        </Text>
       )}
     </div>
   );

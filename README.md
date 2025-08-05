@@ -15,5 +15,5 @@ npm run dev
 
 ## Authors
 
-- Muza ([https://muza.404foundme.com](https://muza.404foundme.com))
-- Ain Naziha ([https://ainnaziha.404foundme.com](https://ainnaziha.404foundme.com))
+- Muza ([https://muza.404foundme.xyz](https://muza.404foundme.xyz))
+- Ain Naziha ([https://ainnaziha.404foundme.xyz](https://ainnaziha.404foundme.xyz))

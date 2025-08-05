@@ -1,7 +1,7 @@
 import React from "react";
 import { Text, Button, Group } from "@mantine/core";
 import { showNotification } from "@mantine/notifications";
-import { STYLES } from "@/constants/style.constants";
+import { STYLES } from "@/constants";
 
 const HomePage: React.FC = () => {
   const handleHintClick = () => {
@@ -19,7 +19,7 @@ const HomePage: React.FC = () => {
 
   return (
     <div
-      className={`flex flex-col items-center justify-center px-6 text-center ${STYLES.MAIN_CONTENT_HEIGHT_MIN}`}
+      className={`flex flex-col items-center justify-center text-center ${STYLES.MAIN_CONTENT_HEIGHT_MIN}`}
     >
       <h1 className="text-5xl font-extrabold font-mono mb-4">404FoundMe</h1>
       <Text size="md" mb={30} style={{ maxWidth: 600 }}>
@@ -36,7 +36,6 @@ const HomePage: React.FC = () => {
           size="md"
           variant="default"
           onClick={handleHintClick}
-          className="uppercase font-semibold tracking-wide"
           radius="xl"
           style={{ minWidth: 180 }}
         >
@@ -47,7 +46,6 @@ const HomePage: React.FC = () => {
           size="md"
           variant="default"
           onClick={handleContactClick}
-          className="uppercase font-semibold tracking-wide"
           radius="xl"
           style={{ minWidth: 180 }}
         >

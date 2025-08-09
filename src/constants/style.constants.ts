@@ -1,6 +1,6 @@
 export const STYLES = {
-  MAIN_CONTENT_HEIGHT: "h-[calc(100vh-60px-30px-5rem)]", // 60px for header, 30px for footer, 5rem for padding
-  MAIN_CONTENT_HEIGHT_MIN: "min-h-[calc(100vh-60px-30px-5rem)]",
+  MAIN_CONTENT_HEIGHT: "h-[calc(100vh-60px-30px-4rem)]", // 60px for header, 30px for footer, 4rem for padding
+  MAIN_CONTENT_HEIGHT_MIN: "min-h-[calc(100vh-60px-30px-4rem)]",
   BORDER_COLOR_LIGHT: "border-gray-200",
   BORDER_COLOR_DARK: "border-zinc-700",
   BORDER_COLOR: "border-gray-200 dark:border-zinc-700",

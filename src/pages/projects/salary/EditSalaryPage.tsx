@@ -8,7 +8,6 @@ import {
   Title,
   Group,
   Stack,
-  Card,
   ActionIcon,
 } from "@mantine/core";
 import { useForm } from "@mantine/form";
@@ -177,34 +176,35 @@ export default function EditSalaryPage() {
           </div>
 
           {form.values.allowances?.map((_, index) => (
-            <Card key={index} withBorder shadow="sm" p="md">
-              <div className="flex flex-col sm:flex-row gap-4">
-                <TextInput
-                  className="flex-1"
-                  label="Allowance Name"
-                  placeholder="Enter allowance name"
-                  required
-                  {...form.getInputProps(`allowances.${index}.name`)}
-                />
-                <NumberInput
-                  className="flex-1"
-                  label="Amount"
-                  placeholder="Enter amount"
-                  required
-                  min={0}
-                  {...form.getInputProps(`allowances.${index}.amount`)}
-                />
-                <div className="flex sm:items-end justify-end sm:justify-start">
-                  <ActionIcon
-                    color="red"
-                    variant="subtle"
-                    onClick={() => handleRemoveAllowance(index)}
-                  >
-                    <IconTrash size={16} />
-                  </ActionIcon>
-                </div>
+            <div key={index} className="flex flex-col sm:flex-row gap-4 ">
+              <div className="flex items-center">
+                <Text>{index + 1}.</Text>
               </div>
-            </Card>
+              <TextInput
+                className="flex-1"
+                label="Allowance Name"
+                placeholder="Enter allowance name"
+                required
+                {...form.getInputProps(`allowances.${index}.name`)}
+              />
+              <NumberInput
+                className="flex-1"
+                label="Amount"
+                placeholder="Enter amount"
+                required
+                min={0}
+                {...form.getInputProps(`allowances.${index}.amount`)}
+              />
+              <div className="flex sm:items-end justify-end sm:justify-start">
+                <ActionIcon
+                  color="red"
+                  variant="subtle"
+                  onClick={() => handleRemoveAllowance(index)}
+                >
+                  <IconTrash size={16} />
+                </ActionIcon>
+              </div>
+            </div>
           ))}
         </Stack>
 

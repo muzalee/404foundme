@@ -97,7 +97,7 @@ export function Layout() {
       </AppShell.Header>
 
       <AppShell.Main>
-        <div className="px-8 sm:px-12 pt-8 pb-4">
+        <div className="px-4 pt-4 sm:px-12 sm:pt-6 pb-4">
           <Outlet />
         </div>
       </AppShell.Main>

@@ -16,7 +16,7 @@ interface PaginationProps {
   onItemsPerPageChange?: (itemsPerPage: number) => void;
 }
 
-const ENTRIES_OPTIONS = [50, 100, 200];
+const ENTRIES_OPTIONS = [20, 50, 100, 200];
 
 export function Pagination({
   currentPage,

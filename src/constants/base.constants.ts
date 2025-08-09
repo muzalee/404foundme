@@ -1,0 +1,4 @@
+export const CONSTANTS = {
+  DEFAULT_PAGE_SIZE: 20,
+  DEFAULT_DATE_FORMAT: "DD/MM/YYYY",
+};

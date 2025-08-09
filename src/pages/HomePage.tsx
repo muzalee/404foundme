@@ -1,15 +1,15 @@
 import React from "react";
 import { Text, Button, Group } from "@mantine/core";
-import { showNotification } from "@mantine/notifications";
 import { STYLES } from "@/constants";
+import { useNotification } from "@/hooks";
 
 const HomePage: React.FC = () => {
+  const { showNotification } = useNotification();
+
   const handleHintClick = () => {
     showNotification({
       title: "Hint",
       message: "There's nothing here yet. Or is there? 👀",
-      autoClose: 3500,
-      position: "top-right",
     });
   };
 

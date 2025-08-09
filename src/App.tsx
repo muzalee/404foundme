@@ -4,6 +4,10 @@ import MazeGame from "./pages/projects/MazeGame";
 import NotFoundPage from "./pages/NotFoundPage";
 import { Layout } from "./components/Layout";
 import { ROUTES } from "./constants";
+import LoginPage from "./pages/LoginPage";
+import SalaryPage from "./pages/projects/salary/SalaryPage";
+import { ProtectedRoute } from "./guards/ProtectedRoute";
+import { PublicRoute } from "./guards/PublicRoute";
 
 function App() {
   return (
@@ -13,6 +17,12 @@ function App() {
           <Route path="*" element={<NotFoundPage />} />
           <Route index element={<HomePage />} />
           <Route path={ROUTES.MAZE} element={<MazeGame />} />
+          <Route element={<ProtectedRoute />}>
+            <Route path={ROUTES.SALARY} element={<SalaryPage />} />
+          </Route>
+          <Route element={<PublicRoute />}>
+            <Route path={ROUTES.LOGIN} element={<LoginPage />} />
+          </Route>
         </Route>
       </Routes>
     </BrowserRouter>

@@ -9,12 +9,25 @@
 @variant dark ([data-mantine-color-scheme="dark"] &);
 
 :root {
+  --color-primary: #0080fa;
+  --color-primary-50: #ecfbff;
+  --color-primary-100: #d5f4ff;
+  --color-primary-200: #b4eeff;
+  --color-primary-300: #80e6ff;
+  --color-primary-400: #44d4ff;
+  --color-primary-500: #19b7ff;
+  --color-primary-600: #0299ff;
+  --color-primary-700: #0080fa;
+  --color-primary-800: #0466c8;
+  --color-primary-900: #0b589d;
+  --color-primary-950: #0c355f;
+
   color-scheme: dark;
 
-  /* --mantine-primary-color-filled: var(--color-white) !important;
-  --mantine-primary-color-filled-hover: var(--color-gray-100) !important;
-  --mantine-primary-color-light: var(--color-black) !important;
-  --mantine-primary-color-light-hover: var(--color-gray-900) !important; */
+  --mantine-primary-color-filled: var(--color-primary-700) !important;
+  --mantine-primary-color-filled-hover: var(--color-primary-600) !important;
+  --mantine-primary-color-light: var(--color-primary-700) !important;
+  --mantine-primary-color-light-hover: var(--color-primary-600) !important;
 }
 
 :root[data-mantine-color-scheme="light"] {

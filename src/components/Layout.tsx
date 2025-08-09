@@ -9,18 +9,31 @@ import {
   Text,
   useMantineColorScheme,
 } from "@mantine/core";
-import { Link, Outlet } from "react-router";
-import { IconExternalLink, IconMoon, IconSun } from "@tabler/icons-react";
+import { Link, Outlet, useNavigate } from "react-router";
+import {
+  IconExternalLink,
+  IconLogout,
+  IconMoon,
+  IconSun,
+} from "@tabler/icons-react";
 import { ROUTES } from "@/constants";
+import { TokenUtil } from "@/utils/token.util";
 
 export function Layout() {
+  const navigate = useNavigate();
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
   const isDark = colorScheme === "dark";
 
   const projects = [
     { name: "Maze Game", path: ROUTES.MAZE },
+    { name: "Salary Calculator", path: ROUTES.SALARY },
     { name: "More Coming..." },
   ];
+
+  const handleLogout = () => {
+    TokenUtil.removeToken();
+    navigate(ROUTES.HOME);
+  };
 
   return (
     <AppShell header={{ height: 60 }} footer={{ height: 30 }} padding="md">
@@ -69,13 +82,24 @@ export function Layout() {
                   <IconMoon size="1.1rem" />
                 )}
               </ActionIcon>
+              {TokenUtil.hasToken() && (
+                <ActionIcon
+                  variant="default"
+                  onClick={handleLogout}
+                  title="Logout"
+                >
+                  <IconLogout size="1.1rem" />
+                </ActionIcon>
+              )}
             </Group>
           </Group>
         </Group>
       </AppShell.Header>
 
       <AppShell.Main>
-        <Outlet />
+        <div className="px-8 sm:px-12 pt-8 pb-4">
+          <Outlet />
+        </div>
       </AppShell.Main>
       <AppShell.Footer
         withBorder={false}

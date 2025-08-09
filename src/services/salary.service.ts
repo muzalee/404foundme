@@ -1,4 +1,10 @@
-import type { GetSalariesQuery, PaginationResponse, Salary } from "@/types";
+import type {
+  BaseResponse,
+  GetSalariesQuery,
+  PaginationResponse,
+  Salary,
+  UpdateSalaryRequest,
+} from "@/types";
 import { apiClient } from "./api/api-client";
 import { TokenUtil } from "@/utils/token.util";
 
@@ -41,6 +47,19 @@ class SalaryService {
     a.click();
     window.URL.revokeObjectURL(url);
     document.body.removeChild(a);
+  }
+
+  async getSalaryById(id: string) {
+    return apiClient.get<BaseResponse<Salary>>(
+      `${this.API_ENDPOINTS.list}/${id}`
+    );
+  }
+
+  async updateSalary(id: string, data: UpdateSalaryRequest) {
+    return apiClient.put<BaseResponse<Salary>>(
+      `${this.API_ENDPOINTS.list}/${id}`,
+      data
+    );
   }
 }
 

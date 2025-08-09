@@ -9,7 +9,10 @@ import { useLocation, useNavigate } from "react-router";
 const LoginPage: React.FC = () => {
   const { startLoading, stopLoading } = useLoading();
   const { showSuccess, showError } = useNotification();
-  const [formData, setFormData] = React.useState({ email: "", password: "" });
+  const [formData, setFormData] = React.useState({
+    username: "",
+    password: "",
+  });
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -19,7 +22,7 @@ const LoginPage: React.FC = () => {
     e.preventDefault();
     startLoading();
     authService
-      .login({ email: formData.email, password: formData.password })
+      .login({ username: formData.username, password: formData.password })
       .then((response) => {
         showSuccess({ message: "Login successful" });
         TokenUtil.setToken(response.data?.token ?? "");
@@ -46,12 +49,12 @@ const LoginPage: React.FC = () => {
       <form onSubmit={handleSubmit} className="w-full max-w-sm">
         <Paper withBorder shadow="sm" p={22} mt={30} radius="md">
           <TextInput
-            label="Email"
+            label="Email/Username"
             placeholder="you@email.com"
             required
             radius="md"
             onChange={(e) =>
-              setFormData({ ...formData, email: e.target.value })
+              setFormData({ ...formData, username: e.target.value })
             }
           />
           <PasswordInput

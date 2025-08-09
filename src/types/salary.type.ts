@@ -24,3 +24,18 @@ export interface GetSalariesQuery {
   page: number;
   pageSize: number;
 }
+
+export interface AllowanceRequest {
+  name: string;
+  amount: number;
+}
+
+export interface UpdateSalaryRequest {
+  name?: string;
+  icNumber?: string;
+  jobTitle?: string;
+  basicSalary?: number;
+  epfRate?: number;
+  taxAmount?: number;
+  allowances?: AllowanceRequest[];
+}

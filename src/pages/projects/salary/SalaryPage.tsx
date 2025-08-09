@@ -1,13 +1,19 @@
 import { useEffect, useState } from "react";
 import { useLoading, useNotification } from "@/hooks";
-import { Button, TextInput, Title } from "@mantine/core";
+import { ActionIcon, Menu, TextInput, Title } from "@mantine/core";
 import { salaryService } from "@/services/salary.service";
 import { DataTable, type DataTableColumn } from "@/components/DataTable";
 import type { GetSalariesQuery, Salary } from "@/types";
-import { CONSTANTS } from "@/constants";
-import { IconSearch } from "@tabler/icons-react";
+import { CONSTANTS, ROUTES } from "@/constants";
+import {
+  IconDotsVertical,
+  IconDownload,
+  IconEdit,
+  IconSearch,
+} from "@tabler/icons-react";
 import { PayslipDownloadModal } from "./components/PayslipDownloadModal";
 import { modals } from "@mantine/modals";
+import { useNavigate } from "react-router";
 
 export default function SalaryPage() {
   const [salaries, setSalaries] = useState<Salary[]>([]);
@@ -24,6 +30,7 @@ export default function SalaryPage() {
 
   const { isLoading, startLoading, stopLoading } = useLoading();
   const { showError } = useNotification();
+  const navigate = useNavigate();
 
   const fetchSalaries = async () => {
     startLoading();
@@ -118,24 +125,27 @@ export default function SalaryPage() {
       title: "Action",
       align: "end",
       render: (functionItem: Salary) => (
-        <Button onClick={() => handleDownload(functionItem)}>
-          Download Payslip
-        </Button>
-        // <Menu shadow="md" width={180} position="bottom-end">
-        //   <Menu.Target>
-        //     <ActionIcon variant="subtle" color="gray">
-        //       <IconDotsVertical size={18} />
-        //     </ActionIcon>
-        //   </Menu.Target>
-        //   <Menu.Dropdown>
-        //     <Menu.Item
-        //       leftSection={<IconDownload size={16} />}
-        //       onClick={() => handleDownload(functionItem)}
-        //     >
-        //       Download Payslip
-        //     </Menu.Item>
-        //   </Menu.Dropdown>
-        // </Menu>
+        <Menu shadow="md" width={180} position="bottom-end">
+          <Menu.Target>
+            <ActionIcon variant="subtle" color="gray">
+              <IconDotsVertical size={18} />
+            </ActionIcon>
+          </Menu.Target>
+          <Menu.Dropdown>
+            <Menu.Item
+              leftSection={<IconEdit size={16} />}
+              onClick={() => navigate(ROUTES.SALARY_EDIT(functionItem.id))}
+            >
+              Edit
+            </Menu.Item>
+            <Menu.Item
+              leftSection={<IconDownload size={16} />}
+              onClick={() => handleDownload(functionItem)}
+            >
+              Download Payslip
+            </Menu.Item>
+          </Menu.Dropdown>
+        </Menu>
       ),
     },
   ];

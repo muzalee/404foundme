@@ -8,6 +8,7 @@ import LoginPage from "./pages/LoginPage";
 import SalaryPage from "./pages/projects/salary/SalaryPage";
 import { ProtectedRoute } from "./guards/ProtectedRoute";
 import { PublicRoute } from "./guards/PublicRoute";
+import EditSalaryPage from "./pages/projects/salary/EditSalaryPage";
 
 function App() {
   return (
@@ -19,6 +20,10 @@ function App() {
           <Route path={ROUTES.MAZE} element={<MazeGame />} />
           <Route element={<ProtectedRoute />}>
             <Route path={ROUTES.SALARY} element={<SalaryPage />} />
+            <Route
+              path={ROUTES.SALARY_EDIT(":id")}
+              element={<EditSalaryPage />}
+            />
           </Route>
           <Route element={<PublicRoute />}>
             <Route path={ROUTES.LOGIN} element={<LoginPage />} />
